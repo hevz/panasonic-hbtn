@@ -72,7 +72,7 @@ static struct acpi_driver acpi_pcc_driver = {
 static const struct key_entry panasonic_keymap[] = {
     { KE_KEY, 0x0, { KEY_RESERVED } },
     { KE_KEY, 0x4, { KEY_SCREENLOCK } }, /* Screen lock */
-    { KE_KEY, 0x6, { KEY_SCREEN } }, /* Screen rotate */
+    { KE_KEY, 0x6, { KEY_CYCLEWINDOWS } }, /* Screen rotate */
     { KE_KEY, 0x8, { KEY_RESERVED } }, /* Unknown */
     { KE_KEY, 0xA, { KEY_KEYBOARD } }, /* Soft keyboard */
     { KE_END, 0 }
