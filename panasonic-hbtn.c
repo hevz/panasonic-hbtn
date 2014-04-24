@@ -27,6 +27,7 @@
 #include <linux/seq_file.h>
 #include <linux/uaccess.h>
 #include <linux/slab.h>
+#include <acpi/acpi.h>
 #include <acpi/acpi_bus.h>
 #include <acpi/acpi_drivers.h>
 #include <linux/input.h>
@@ -101,7 +102,8 @@ static void acpi_pcc_generate_keyinput(struct pcc_acpi *pcc)
         return;
     }
 
-    acpi_bus_generate_proc_event(pcc->device, HBTN_NOTIFY, result);
+    acpi_bus_generate_netlink_event(pcc->device->pnp.device_class,
+				dev_name(&pcc->device->dev), HBTN_NOTIFY, result);
 
     ke = sparse_keymap_entry_from_scancode(hotk_input_dev, result & 0xe);
     if (!ke) {
