@@ -1,0 +1,10 @@
+obj-m = panasonic-hbtn.o
+
+KBUILD_CFLAGS = -Wno-error=implicit-function-declaration -mcmodel=kernel
+
+KVERSION = $(shell uname -r)
+
+all:
+        make -C /lib/modules/$(KVERSION)/build M=$(PWD) modules
+clean:
+        make -C /lib/modules/$(KVERSION)/build M=$(PWD) clean
